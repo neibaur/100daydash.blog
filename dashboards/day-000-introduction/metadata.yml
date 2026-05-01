@@ -1,0 +1,18 @@
+day: 0
+title: "Building 100daydash.blog"
+slug: "introduction"
+date: "2026-05-01"
+status: "draft"
+summary: "Setting up the foundation for 100 dashboards in 100 days."
+data_sources:
+  - name: "Project repository"
+    url: "https://100daydash.blog"
+    license: "Project-owned"
+tools:
+  - Python
+  - Astro
+outputs:
+  - type: screenshot
+    path: outputs/images/preview.png
+  - type: interactive
+    path: outputs/html/index.html

@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import argparse
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+Reporter = Callable[[str], None]
 
 
 @dataclass(frozen=True)
@@ -15,6 +17,14 @@ class DashboardPaths:
     dashboard_dir: Path
     blog_post: Path
     media_dir: Path
+
+
+class DashboardExistsError(RuntimeError):
+    pass
+
+
+class DashboardCreationError(RuntimeError):
+    pass
 
 
 def slugify(title: str) -> str:
@@ -39,10 +49,35 @@ def ensure_available(paths: DashboardPaths) -> None:
     ]
     if existing:
         joined = "\n".join(str(path.relative_to(ROOT)) for path in existing)
-        raise FileExistsError(f"Refusing to overwrite existing paths:\n{joined}")
+        raise DashboardExistsError(f"Refusing to overwrite existing paths:\n{joined}")
 
 
-def create_dashboard(day: int, title: str, today: date | None = None) -> DashboardPaths:
+def create_directory(path: Path, reporter: Reporter) -> None:
+    try:
+        path.mkdir(parents=True, exist_ok=False)
+    except FileExistsError as exc:
+        raise DashboardExistsError(f"Directory already exists: {path.relative_to(ROOT)}") from exc
+    except OSError as exc:
+        message = f"Could not create directory {path.relative_to(ROOT)}: {exc}"
+        raise DashboardCreationError(message) from exc
+    reporter(f"Created directory: {path.relative_to(ROOT)}")
+
+
+def write_file(path: Path, content: str, reporter: Reporter) -> None:
+    try:
+        path.write_text(content, encoding="utf-8")
+    except OSError as exc:
+        message = f"Could not write file {path.relative_to(ROOT)}: {exc}"
+        raise DashboardCreationError(message) from exc
+    reporter(f"Created file: {path.relative_to(ROOT)}")
+
+
+def create_dashboard(
+    day: int,
+    title: str,
+    today: date | None = None,
+    reporter: Reporter = print,
+) -> DashboardPaths:
     today = today or date.today()
     paths = build_paths(day, title)
     ensure_available(paths)
@@ -55,9 +90,10 @@ def create_dashboard(day: int, title: str, today: date | None = None) -> Dashboa
         paths.dashboard_dir / "outputs" / "images",
         paths.dashboard_dir / "outputs" / "html",
         paths.dashboard_dir / "outputs" / "video",
+        paths.blog_post.parent,
         paths.media_dir,
     ]:
-        directory.mkdir(parents=True, exist_ok=False)
+        create_directory(directory, reporter)
 
     for gitkeep in [
         paths.dashboard_dir / "data" / "raw" / ".gitkeep",
@@ -67,16 +103,46 @@ def create_dashboard(day: int, title: str, today: date | None = None) -> Dashboa
         paths.dashboard_dir / "outputs" / "video" / ".gitkeep",
         paths.media_dir / ".gitkeep",
     ]:
-        gitkeep.write_text("")
+        write_file(gitkeep, "", reporter)
 
-    paths.dashboard_dir.joinpath("README.md").write_text(
-        dashboard_readme(day, title, paths.folder_name)
+    write_file(
+        paths.dashboard_dir / "metadata.yml",
+        dashboard_metadata(day, title, paths.folder_name, today),
+        reporter,
     )
-    paths.dashboard_dir.joinpath("src", "main.py").write_text(dashboard_main(title))
-    paths.dashboard_dir.joinpath("tests", "test_main.py").write_text(dashboard_test())
-    paths.blog_post.write_text(blog_post(day, title, paths.folder_name, today))
+    write_file(
+        paths.dashboard_dir / "README.md",
+        dashboard_readme(day, title, paths.folder_name),
+        reporter,
+    )
+    write_file(paths.dashboard_dir / "src" / "main.py", dashboard_main(title), reporter)
+    write_file(paths.dashboard_dir / "tests" / "test_main.py", dashboard_test(), reporter)
+    write_file(paths.blog_post, blog_post(day, title, paths.folder_name, today), reporter)
 
     return paths
+
+
+def dashboard_metadata(day: int, title: str, folder_name: str, pub_date: date) -> str:
+    slug = folder_name.removeprefix(f"day-{day:03d}-")
+    return f"""day: {day}
+title: "{title}"
+slug: "{slug}"
+date: "{pub_date.isoformat()}"
+status: "draft"
+summary: "A dashboard exploring {title}."
+data_sources:
+  - name: "Example"
+    url: "https://example.com"
+    license: "Public"
+tools:
+  - Python
+  - Astro
+outputs:
+  - type: screenshot
+    path: outputs/images/preview.png
+  - type: interactive
+    path: outputs/html/index.html
+"""
 
 
 def dashboard_readme(day: int, title: str, folder_name: str) -> str:
@@ -187,7 +253,15 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    paths = create_dashboard(args.day, args.title)
+    try:
+        paths = create_dashboard(args.day, args.title)
+    except DashboardExistsError as exc:
+        print(f"Dashboard was not created: {exc}")
+        raise SystemExit(1) from exc
+    except DashboardCreationError as exc:
+        print(f"Dashboard creation failed: {exc}")
+        raise SystemExit(1) from exc
+
     print("Created dashboard:")
     print(f"- {paths.dashboard_dir.relative_to(ROOT)}")
     print(f"- {paths.blog_post.relative_to(ROOT)}")
