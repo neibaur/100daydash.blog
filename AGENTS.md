@@ -1031,6 +1031,33 @@ jobs:
         uses: actions/dependency-review-action@v4
 ```
 
+## 10.5 GitHub Actions Standards (2026 Update)
+
+Node Runtime Standard:
+
+- Prefer GitHub Actions that are compatible with Node 20+ or Node 24.
+- Avoid deprecated Node 16-based actions.
+- Do not rely on undocumented environment variables to force Node versions.
+
+Action Versioning:
+
+- Prefer latest stable major versions of actions.
+- Examples:
+  - actions/checkout@v4
+  - actions/setup-node@v4
+  - github/codeql-action@v4 or newer
+- Update workflows when upgrading major versions.
+
+Security Noise Reduction:
+
+- Configure Gitleaks and detect-secrets to ignore:
+  - .secrets.baseline
+  - pnpm-lock.yaml
+  - .venv/
+- Use explicit allowlists via:
+  - .gitleaks.toml
+  - detect-secrets baseline
+- Do not disable scanning globally.
 ---
 
 # 11. Pre-Commit Baseline
