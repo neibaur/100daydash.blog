@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">100daydash.blog architecture placeholder</title>
+  <desc id="desc">A simple flow from Python dashboards to static outputs to Astro blog posts.</desc>
+  <rect width="960" height="540" fill="#f8fafc" />
+  <rect x="70" y="145" width="220" height="150" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="3" />
+  <text x="180" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Python</text>
+  <text x="180" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#475569">dashboards</text>
+  <rect x="370" y="145" width="220" height="150" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="3" />
+  <text x="480" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Exports</text>
+  <text x="480" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#475569">images + HTML</text>
+  <rect x="670" y="145" width="220" height="150" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="3" />
+  <text x="780" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Astro</text>
+  <text x="780" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#475569">blog posts</text>
+  <path d="M300 220h60" stroke="#2563eb" stroke-width="6" stroke-linecap="round" />
+  <path d="M350 205l18 15-18 15" fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M600 220h60" stroke="#2563eb" stroke-width="6" stroke-linecap="round" />
+  <path d="M650 205l18 15-18 15" fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="480" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#0f172a">100 dashboards in 100 days</text>
+</svg>

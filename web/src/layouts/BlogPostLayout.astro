@@ -1,0 +1,28 @@
+---
+const { frontmatter } = Astro.props;
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={frontmatter.description} />
+    <title>{frontmatter.title} | 100daydash.blog</title>
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <main class="post-shell">
+      <a class="site-link" href="/">100daydash.blog</a>
+      <article class="post">
+        <header class="post-header">
+          <p>Day {frontmatter.day}</p>
+          <h1>{frontmatter.title}</h1>
+          <p>{frontmatter.description}</p>
+        </header>
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>

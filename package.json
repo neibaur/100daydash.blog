@@ -1,0 +1,14 @@
+{
+  "name": "100daydash-blog",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.10.0",
+  "scripts": {
+    "build": "pnpm --dir web build",
+    "dev": "pnpm --dir web dev",
+    "lint": "pnpm --dir web lint",
+    "format:check": "pnpm --dir web format:check",
+    "typecheck": "pnpm --dir web typecheck",
+    "test": "pnpm --dir web test"
+  }
+}

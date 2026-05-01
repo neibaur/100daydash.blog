@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import "../styles/global.css";
+
+const posts = await getCollection("blog");
+const sortedPosts = posts.sort((a, b) => b.data.day - a.data.day);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A daily archive of 100 dashboards built in 100 days."
+    />
+    <title>100daydash.blog</title>
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <main class="home-shell">
+      <section class="home-hero">
+        <p>100 dashboards in 100 days</p>
+        <h1>100daydash.blog</h1>
+        <p>
+          A local-first publishing sprint for data dashboards, methods, notes,
+          and static exports.
+        </p>
+      </section>
+
+      <section class="post-list" aria-labelledby="latest-posts">
+        <h2 id="latest-posts">Latest Posts</h2>
+        {
+          sortedPosts.map((post) => (
+            <article>
+              <p>Day {post.data.day}</p>
+              <h3>
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              <p>{post.data.description}</p>
+            </article>
+          ))
+        }
+      </section>
+    </main>
+  </body>
+</html>
