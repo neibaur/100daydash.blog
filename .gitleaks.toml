@@ -2,3 +2,10 @@ title = "100daydash.blog gitleaks configuration"
 
 [extend]
 useDefault = true
+
+[[allowlists]]
+description = "Generated lock and secret-baseline files."
+paths = [
+  '''^\.secrets\.baseline$''',
+  '''^pnpm-lock\.yaml$''',
+]
