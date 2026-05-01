@@ -10,7 +10,7 @@ tags:
   - python
   - data-visualization
 dataSources: []
-heroImage: "/media/day-001-first-dashboard-test/preview.png"
+heroImage: "/media/day-001-first-dashboard-test/preview.svg"
 ---
 
 Write the dashboard story here.
