@@ -1,16 +1,16 @@
 ---
-title: "Day 001: First Dashboard Test"
+title: "Day 002: First Dashboard Test"
 description: "A dashboard exploring First Dashboard Test."
 pubDate: "2026-05-01"
-day: 1
-dashboardSlug: "day-001-first-dashboard-test"
-status: "draft"
+day: 2
+dashboardSlug: "day-002-first-dashboard-test"
+status: "archived"
 tags:
   - dashboard
   - python
   - data-visualization
 dataSources: []
-heroImage: "/media/day-001-first-dashboard-test/preview.svg"
+heroImage: "/media/day-002-first-dashboard-test/preview.svg"
 ---
 
 Write the dashboard story here.

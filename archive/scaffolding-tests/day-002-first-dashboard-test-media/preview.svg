@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">Day 001 dashboard preview placeholder</title>
+  <title id="title">Day 002 dashboard preview placeholder</title>
   <desc id="desc">A placeholder preview for the first dashboard test.</desc>
   <rect width="960" height="540" fill="#f8fafc" />
   <rect x="90" y="90" width="780" height="360" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="4" />
   <path d="M170 365h620" stroke="#cbd5e1" stroke-width="4" />
   <path d="M180 330l115-72 108 36 132-118 110 82 143-132" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-  <text x="480" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#0f172a">Day 001</text>
+  <text x="480" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#0f172a">Day 002</text>
   <text x="480" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#475569">First Dashboard Test</text>
 </svg>

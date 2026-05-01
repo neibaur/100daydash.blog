@@ -1,4 +1,4 @@
-# Day 001: First Dashboard Test
+# Day 002: First Dashboard Test
 
 ## Summary
 
@@ -22,12 +22,12 @@ Explain the data ingestion, transformation, and visualization approach.
 
 - Screenshot: `outputs/images/preview.png`
 - Interactive dashboard: `outputs/html/index.html`
-- Blog post: `../../web/src/content/blog/day-001-first-dashboard-test.md`
+- Blog post: `../../web/src/content/blog/day-002-first-dashboard-test.md`
 
 ## Run Locally
 
 ```bash
-uv run python dashboards/day-001-first-dashboard-test/src/main.py
+uv run python dashboards/day-002-first-dashboard-test/src/main.py
 ```
 
 ## Quality Checks
