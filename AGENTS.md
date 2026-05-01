@@ -231,9 +231,15 @@ changes
 
 ---
 
-## 3.3 Practical TDD
+## 3.3 Practical TDD & Coverage Gate
 
 Use practical TDD, not ceremony.
+
+Strict Coverage Gate: All Python scripts in /scripts and /dashboards, and TypeScript utilities in /web, must maintain a minimum of 80% code coverage.
+
+AI agents must verify coverage using pytest-cov or vitest before declaring a task complete.
+
+Prioritize testing edge cases: directory already exists, invalid metadata formats, and network failures in ingest.py.
 
 Tests are expected for:
 
@@ -253,6 +259,8 @@ Tests are not required for:
 - placeholder content
 
 When in doubt, test logic that could silently break future dashboards.
+
+Code coverage is ≥ 80% for the modified modules.
 
 ---
 
@@ -1352,6 +1360,8 @@ A task is complete when:
 - new dashboards follow the metadata standard
 - CI config is updated if quality gates change
 - agent-created files are intentional and necessary
+- Code coverage is ≥ 80% for the modified modules.
+- scripts/validate-dashboard-metadata.py passes with zero errors.
 
 ---
 
