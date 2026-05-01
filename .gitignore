@@ -49,6 +49,7 @@ coverage.xml
 *.py.cover
 .hypothesis/
 .pytest_cache/
+.pytest-tmp/
 cover/
 
 # Translations
@@ -216,3 +217,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Node / Astro
+node_modules/
+web/node_modules/
+web/dist/
+web/.astro/
+
+# Local environment files
+.env.*
+!.env.example

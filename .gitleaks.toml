@@ -1,0 +1,4 @@
+title = "100daydash.blog gitleaks configuration"
+
+[extend]
+useDefault = true
