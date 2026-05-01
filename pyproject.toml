@@ -3,7 +3,9 @@ name = "100daydash-blog"
 version = "0.1.0"
 description = "100 dashboards in 100 days"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "matplotlib>=3.10.9",
+]
 
 [dependency-groups]
 dev = [

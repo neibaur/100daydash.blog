@@ -52,15 +52,17 @@ def ensure_available(paths: DashboardPaths) -> None:
         raise DashboardExistsError(f"Refusing to overwrite existing paths:\n{joined}")
 
 
-def create_directory(path: Path, reporter: Reporter) -> None:
+def create_directory(path: Path, reporter: Reporter, *, exist_ok: bool = False) -> None:
+    existed_before = path.exists()
     try:
-        path.mkdir(parents=True, exist_ok=False)
+        path.mkdir(parents=True, exist_ok=exist_ok)
     except FileExistsError as exc:
         raise DashboardExistsError(f"Directory already exists: {path.relative_to(ROOT)}") from exc
     except OSError as exc:
         message = f"Could not create directory {path.relative_to(ROOT)}: {exc}"
         raise DashboardCreationError(message) from exc
-    reporter(f"Created directory: {path.relative_to(ROOT)}")
+    action = "Using existing directory" if exist_ok and existed_before else "Created directory"
+    reporter(f"{action}: {path.relative_to(ROOT)}")
 
 
 def write_file(path: Path, content: str, reporter: Reporter) -> None:
@@ -90,10 +92,11 @@ def create_dashboard(
         paths.dashboard_dir / "outputs" / "images",
         paths.dashboard_dir / "outputs" / "html",
         paths.dashboard_dir / "outputs" / "video",
-        paths.blog_post.parent,
         paths.media_dir,
     ]:
         create_directory(directory, reporter)
+
+    create_directory(paths.blog_post.parent, reporter, exist_ok=True)
 
     for gitkeep in [
         paths.dashboard_dir / "data" / "raw" / ".gitkeep",

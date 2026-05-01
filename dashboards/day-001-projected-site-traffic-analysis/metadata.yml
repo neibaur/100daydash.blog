@@ -1,0 +1,19 @@
+day: 1
+title: "Projected Site Traffic Analysis"
+slug: "projected-site-traffic-analysis"
+date: "2026-05-01"
+status: "draft"
+summary: "Compares a 100-day site traffic target against a deterministic actual traffic projection."
+data_sources:
+  - name: "Example"
+    url: "https://example.com"
+    license: "Public"
+tools:
+  - Python
+  - Astro
+  - Matplotlib
+outputs:
+  - type: screenshot
+    path: outputs/images/preview.png
+  - type: interactive
+    path: outputs/html/index.html
