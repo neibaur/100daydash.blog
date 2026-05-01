@@ -1,0 +1,18 @@
+day: 1
+title: "Dashboard Title"
+slug: "dashboard-title"
+date: "YYYY-MM-DD"
+status: "draft"
+summary: "Short dashboard summary"
+data_sources:
+  - name: "Source Name"
+    url: "https://example.com"
+    license: "Public domain or source-specific license"
+tools:
+  - Python
+  - Astro
+outputs:
+  - type: screenshot
+    path: outputs/images/preview.png
+  - type: interactive
+    path: outputs/html/index.html
