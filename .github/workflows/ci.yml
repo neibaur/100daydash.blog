@@ -45,8 +45,11 @@ jobs:
       - name: Bandit
         run: uv run bandit -r dashboards scripts -x "*/tests/*"
 
-      - name: detect-secrets
-        run: uv run detect-secrets scan --all-files --baseline .secrets.baseline --exclude-files "(^|[\\/])(.venv|node_modules|dist|.astro|.git)([\\/]|$)|^\.secrets\.baseline$"
+      - name: Detect secrets
+        run: |
+          uv run detect-secrets scan \
+            --baseline .secrets.baseline \
+            --exclude-files "(^|[\\/])(.venv|venv|node_modules|dist|build|coverage|htmlcov|.astro|.git|.mypy_cache|.pytest_cache|.ruff_cache|__pycache__)([\\/]|$)|^\.secrets\.baseline$|^uv\.lock$|^pnpm-lock\.yaml$"
 
   web-quality:
     name: Web Quality

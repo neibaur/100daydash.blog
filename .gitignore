@@ -151,7 +151,7 @@ activemq-data/
 # Environments
 .env
 .envrc
-.venv
+.venv/
 env/
 venv/
 ENV/
@@ -218,11 +218,13 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Node / Astro
+# Node / Astro / frontend
 node_modules/
+.pnpm-store/
 web/node_modules/
 web/dist/
 web/.astro/
+.astro/
 
 # Local environment files
 .env.*
