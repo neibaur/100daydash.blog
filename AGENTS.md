@@ -8,7 +8,7 @@ The project combines:
 
 - **Narrative publishing**: daily Markdown blog posts
 - **Rich media**: screenshots, videos, animated GIFs, and static exports
-- **Interactive dashboards**: embedded HTML dashboards, hosted static assets, or dashboard links
+- **Interactive dashboards**: embedded HTML dashboards, hosted static assets, or dashboard linkssecret
 - **Python dashboard logic**: data ingestion, transformation, validation, visualization, and exports
 
 This file is the primary operating guide for AI coding agents such as **Cursor**, **Windsurf**, **Codex**, or similar tools.
