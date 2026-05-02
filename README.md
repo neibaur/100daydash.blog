@@ -1,25 +1,63 @@
 # 100daydash.blog
 
-100 dashboards in 100 days.
+**100 dashboards in 100 days.**
 
-This repository contains the publishing system for `100daydash.blog`: an Astro
-blog, Python dashboard workspaces, local-first automation, and the quality gates
-needed to keep the project easy to maintain as the daily archive grows.
+This repository powers [100daydash.blog](https://100daydash.blog), a structured
+project focused on building consistent, production-quality data artifacts on a
+daily cadence.
 
-## Repository Layout
+This is not just a blog — it is a **dashboard delivery system** designed to
+enforce quality, consistency, and repeatability from Day 1.
 
-- `web/`: Astro + TypeScript site and blog content.
-- `dashboards/`: Python dashboard source, tests, data folders, and exports.
-- `docs/`: Architecture, development, security, and publishing notes.
-- `scripts/`: Repository automation for dashboard scaffolding and validation.
+---
 
-## Local Development
+## 🚀 Project Goals
+
+- Build 100 dashboards (or data artifacts) in 100 days
+- Emphasize **consistency over complexity**
+- Use **real data sources and APIs**
+- Explore a wide range of tools:
+  - Python, Power BI, Tableau, Cognos, SQL
+  - Cloud platforms (Azure, AWS, GCP)
+  - Multiple data storage patterns (files, APIs, databases)
+
+---
+
+## 🧱 Repository Structure
+
+- `web/` — Astro + TypeScript frontend and blog content
+- `dashboards/` — Python dashboard workspaces, data, and tests
+- `docs/` — Architecture, development, and system design notes
+- `scripts/` — Automation for scaffolding and validation
+
+---
+
+## ⚙️ Engineering Standards
+
+This project is intentionally built with production-grade practices:
+
+- **CI/CD**: GitHub Actions (tests, linting, formatting, security)
+- **Testing**:
+  - Python: `pytest`
+  - Frontend: `vitest`
+- **Formatting**: Prettier (enforced locally + CI)
+- **Linting**: ESLint
+- **Pre-commit hooks**:
+  - Husky + lint-staged (fail-fast enforcement)
+- **Security**:
+  - CodeQL (advanced configuration)
+  - Secret scanning
+  - Dependabot (alerts + updates)
+
+---
+
+## 💻 Local Development
 
 ```bash
+# Python environment
 .venv\Scripts\uv.exe sync
 .venv\Scripts\uv.exe run pytest --cov
+
+# Frontend
 pnpm --dir web install
 pnpm --dir web build
-```
-
-Use `uv` for Python dependencies and `pnpm` for the Astro frontend.
