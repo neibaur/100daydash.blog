@@ -13,7 +13,7 @@ const sortedPosts = posts.sort((a, b) => b.data.day - a.data.day);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="A daily archive of 100 dashboards built in 100 days."
+      content="Isaac Neibaur's 100-day dashboard project for building rapid-response data skills with Python, Astro, and Cloudflare."
     />
     <title>100daydash.blog</title>
     <link rel="icon" href="/favicon.svg" />
@@ -24,9 +24,36 @@ const sortedPosts = posts.sort((a, b) => b.data.day - a.data.day);
         <p>100 dashboards in 100 days</p>
         <h1>100daydash.blog</h1>
         <p>
-          A local-first publishing sprint for data dashboards, methods, notes,
-          and static exports.
+          Isaac Neibaur's public sprint to turn disciplined data engineering
+          practice into useful dashboards, shipped one day at a time.
         </p>
+      </section>
+
+      <section class="post-list" aria-labelledby="about-project">
+        <h2 id="about-project">About The Project</h2>
+        <article>
+          <p>Who</p>
+          <h3>Isaac Neibaur</h3>
+          <p>Data Engineer & Platform Architect.</p>
+        </article>
+        <article>
+          <p>Goal</p>
+          <h3>Build 100 dashboards in 100 days</h3>
+          <p>
+            The aim is to develop consistency and rapid-response data skills by
+            repeatedly moving from question to dataset, analysis, visualization,
+            and published dashboard.
+          </p>
+        </article>
+        <article>
+          <p>Tech</p>
+          <h3>Python + Astro + Cloudflare monorepo</h3>
+          <p>
+            The project emphasizes engineering rigor: meaningful test coverage
+            at or above 80%, CI validation, metadata standards, and a
+            local-first workflow that keeps each dashboard reviewable.
+          </p>
+        </article>
       </section>
 
       <section class="post-list" aria-labelledby="latest-posts">
