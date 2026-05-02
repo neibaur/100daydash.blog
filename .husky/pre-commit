@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+pnpm --dir web test
+pnpm --dir web exec lint-staged
