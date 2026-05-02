@@ -31,28 +31,54 @@ The project is organized as a small monorepo:
 - `scripts/` contains local automation for creating and validating dashboard days.
 - `docs/` captures architecture, security, and development notes.
 
+Before building dashboards, the focus was on hardening the foundation to ensure
+the system can scale across 100 consecutive days.
+
 ## Hardening the CI/CD Pipeline
 
 The first infrastructure pass focused on keeping the pipeline strict without
-making it noisy. Gitleaks false positives were resolved so secret scanning can
-stay enabled, CodeQL was upgraded to v4, and the security checks were tuned to
-surface useful signals instead of routine lockfile and baseline churn.
+introducing unnecessary noise. Gitleaks false positives were resolved so secret
+scanning can stay enabled, CodeQL was upgraded to v4, and the security checks
+were tuned to surface useful signals instead of routine lockfile and baseline
+churn.
+
+![GitHub Actions success](/media/day-000-introduction/github-actions-success.png)
+
+_GitHub Actions quality gates are passing, including tests and linting, which
+reinforces the project's coverage and CI goals._
 
 ## Security Baseline Improvements
 
 The security baseline also now accounts for the UTF-8 encoding issue found
 during local scans. Directory exclusions keep `.venv`, lockfiles, and generated
-baselines out of repeated scan paths, which keeps feedback fast while preserving
-reliable coverage for source, scripts, docs, and dashboard metadata.
+baselines out of scan paths, which keeps feedback fast while preserving reliable
+coverage for source, scripts, docs, and dashboard metadata.
 
 ## Environment Consistency Across Machines
 
-The development workflow is built around `uv sync` for Python and
-`pnpm install` for the Astro site. Running the same setup commands on both the
-laptop and desktop keeps the toolchains aligned and helps preserve the current
-87% coverage baseline across machines.
+The development workflow is built around `uv sync` to manage the Python
+environment and `pnpm install` to manage Astro and frontend dependencies.
+Running the same setup commands on both the laptop and desktop prevents "works
+on my machine" drift and helps preserve the current 87% coverage baseline
+across machines.
+
+![Cloudflare Pages deployment](/media/day-000-introduction/cloudflare-pages-deployment.png)
+
+_The site is successfully deployed through Cloudflare Pages, matching the
+local-first workflow with a static deployed target._
 
 The Day 0 dashboard folder lives at
 [`dashboards/day-000-introduction`](../../../dashboards/day-000-introduction/README.md).
 It is intentionally lightweight: it proves the repo shape, test setup, and static
 output flow before the first real data dashboard begins.
+
+Coverage and reproducibility are treated as first-class constraints from Day 0.
+
+### Definition of Done (Day 0)
+
+- Daily dashboard creation is repeatable through local scaffolding and metadata
+  validation.
+- CI/CD quality gates cover formatting, linting, tests, security scans, and
+  static site builds.
+- Local laptop, desktop, and deployed environments remain reproducible from the
+  same dependency files and setup commands.
