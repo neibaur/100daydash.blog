@@ -14,6 +14,18 @@ dataSources: []
 heroImage: "/media/day-002-technical-debt-spikes-and-strategic-restraint/preview.svg"
 ---
 
+<<<<<<< HEAD
+=======
+Day 2 focused on technical debt instead of dashboard creation.
+
+The goal was to protect long-term velocity by reducing platform risk early.
+Before producing more dashboards, the project needed stable foundations across
+infrastructure, frontend publishing, repository governance, dependency
+automation, and security checks.
+
+The priority was system stability over visible output.
+
+>>>>>>> 0b8e997 (feat(blog): add Day 2 post (technical debt, Astro v6 migration, governance hardening))
 ## Goal / Intent
 
 Day 2 focused on technical debt instead of dashboard creation.
