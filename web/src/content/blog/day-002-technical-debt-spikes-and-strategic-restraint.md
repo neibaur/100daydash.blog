@@ -14,8 +14,6 @@ dataSources: []
 heroImage: "/media/day-002-technical-debt-spikes-and-strategic-restraint/preview.svg"
 ---
 
-Day 2 focused on technical debt instead of dashboard creation.
-
 ## Goal / Intent
 
 Day 2 focused on technical debt instead of dashboard creation.
