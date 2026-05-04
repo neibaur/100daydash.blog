@@ -61,3 +61,18 @@ This project is intentionally built with production-grade practices:
 # Frontend
 pnpm --dir web install
 pnpm --dir web build
+```
+
+---
+
+## Governance
+
+Lightweight governance keeps this portfolio production-minded without slowing daily publishing:
+
+- [AI agent rules](AGENTS.md)
+- [Pull request checklist](.github/pull_request_template.md)
+- [CODEOWNERS](.github/CODEOWNERS)
+- [Architecture notes](docs/architecture.md)
+- [Dashboard standard](docs/dashboard-standard.md)
+- [Security notes](docs/security.md)
+- [Migration plan](docs/migration-plan.md)

@@ -1,0 +1,15 @@
+.env
+.env.*
+*.tfstate
+*.tfstate.*
+secrets/
+reports/
+coverage/
+htmlcov/
+dist/
+node_modules/
+.venv/
+data/raw/
+data/processed/
+data/exports/
+/archive/

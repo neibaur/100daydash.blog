@@ -8,7 +8,7 @@ The project combines:
 
 - **Narrative publishing**: daily Markdown blog posts
 - **Rich media**: screenshots, videos, animated GIFs, and static exports
-- **Interactive dashboards**: embedded HTML dashboards, hosted static assets, or dashboard linkssecret
+- **Interactive dashboards**: embedded HTML dashboards, hosted static assets, or dashboard links
 - **Python dashboard logic**: data ingestion, transformation, validation, visualization, and exports
 
 This file is the primary operating guide for AI coding agents such as **Cursor**, **Windsurf**, **Codex**, or similar tools.
@@ -1386,6 +1386,111 @@ Bad TODO:
 ```text
 TODO: improve this
 ```
+
+## 15.1 Safe Actions AI Agents May Perform
+
+AI agents may perform these actions without additional human approval when they stay within the requested scope:
+
+- Read, search, and summarize repository files.
+- Create or edit documentation, Markdown posts, tests, scripts, Astro components, and Python code.
+- Run local validation, formatting checks, tests, metadata validation, builds, and security scans.
+- Read public API documentation and inspect safe read-only GET examples.
+- Generate local fixtures, mock data, screenshots, static exports, and placeholder assets that do not contain secrets or private data.
+- Update CI configuration when the change preserves or strengthens existing quality and security gates.
+
+## 15.2 Unsafe Actions Requiring Explicit Human Approval
+
+AI agents must ask for explicit human approval before performing any action that could mutate real systems, real state, real credentials, billing, or published content.
+
+CRITICAL RULE:
+
+AI agents may read public API documentation and inspect safe GET examples, but must NOT execute real-world POST, PUT, PATCH, DELETE, deployment, publishing, payment, credential, or data-mutating operations without explicit human approval.
+
+This includes:
+
+- Deploying, publishing, releasing, or changing production hosting settings.
+- Running infrastructure apply, destroy, import, state migration, or remote-state commands.
+- Creating, rotating, revoking, testing, or storing real credentials.
+- Writing to external APIs, cloud services, databases, payment systems, analytics systems, or production dashboards.
+- Running scripts that delete, overwrite, anonymize, upload, or transform real data irreversibly.
+- Changing branch protection, repository secrets, environments, or access controls.
+
+## 15.3 Protected Files and Directories
+
+Treat these paths with extra care:
+
+- `.github/workflows/`
+- `.github/CODEOWNERS`
+- `.github/pull_request_template.md`
+- `.gitleaks.toml`
+- `.secrets.baseline`
+- `.env.example`
+- `AGENTS.md`
+- `pyproject.toml`
+- `uv.lock`
+- `package.json`
+- `pnpm-lock.yaml`
+- `pnpm-workspace.yaml`
+- `scripts/`
+- `dashboards/**/data/`
+- `dashboards/**/outputs/`
+- `web/src/content/blog/`
+- `web/public/media/`
+- `docs/adr/`
+
+Do not delete, rewrite, or broad-format protected files unless the requested task requires it and the diff is small and reviewable.
+
+## 15.4 Secrets, Generated Files, Real Data, and External Systems
+
+- Never commit API keys, tokens, passwords, cookies, private keys, certificates, or real credentials.
+- Keep `.env` and `.env.*` untracked except for safe placeholder files such as `.env.example`.
+- Keep `.secrets.baseline` UTF-8 encoded.
+- Do not commit raw private data, regulated data, non-anonymized personal data, production exports, or infrastructure state.
+- Generated reports, coverage output, build output, virtual environments, dependency folders, and raw/processed data exports should remain ignored unless intentionally documented as a static artifact.
+- CI must not call external production systems, mutate infrastructure, publish content, or require real credentials by default.
+
+## 15.5 Mock vs Real Data Separation
+
+Mock, fixture, sample, and synthetic data must be clearly separated from real data.
+
+- Prefer `tests/fixtures/`, `sample`, or clearly named mock files for tests.
+- Keep real downloaded data under ignored local data directories unless it is public, small, license-compatible, and intentionally committed.
+- Do not use mock or test credentials against real state, production systems, real credentials, or irreversible data operations.
+- Document data source licensing and limitations in dashboard README files or blog frontmatter.
+
+## 15.6 Validation Commands
+
+Use the narrowest validation needed while working, then run the relevant final checks before declaring completion:
+
+```bash
+uv run python scripts/validate-dashboard-metadata.py
+uv run pytest --cov
+pnpm --filter web build
+```
+
+For broader changes, also run:
+
+```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy .
+uv run bandit -r dashboards scripts -x "*/tests/*"
+uv run detect-secrets scan --baseline .secrets.baseline
+pnpm --filter web lint
+pnpm --filter web typecheck
+pnpm --filter web test
+```
+
+## 15.7 AI Definition of Done
+
+AI-assisted changes are done when:
+
+- The requested behavior or documentation change is complete.
+- Existing workflows and quality gates are preserved or strengthened.
+- Relevant validation commands pass locally.
+- No secrets, real credentials, production exports, or infrastructure state are committed.
+- Mock/test configuration has not been used against real state, production systems, real credentials, or irreversible data operations.
+- Any deferred risky work is documented in `docs/migration-plan.md` or an ADR.
 
 ---
 
