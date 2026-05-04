@@ -100,7 +100,7 @@ const sortedPosts = posts.sort((a, b) => b.data.day - a.data.day);
             <article>
               <p>Day {post.data.day}</p>
               <h3>
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
               </h3>
               <p>{post.data.description}</p>
             </article>
