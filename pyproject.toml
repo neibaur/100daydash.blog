@@ -45,7 +45,7 @@ exclude = ["dashboards/day-[0-9][0-9][0-9]-.*/(src|tests)/.*\\.py"]
 [tool.pytest.ini_options]
 testpaths = ["dashboards", "scripts"]
 python_files = ["test_*.py"]
-addopts = "-ra --import-mode=importlib --basetemp=.pytest-tmp --cov=dashboards --cov=scripts --cov-report=term-missing"
+addopts = "-ra --import-mode=importlib --basetemp=.pytest-tmp --cov=dashboards --cov=scripts --cov-report=term-missing --cov-fail-under=80"
 
 [tool.coverage.run]
 branch = true
