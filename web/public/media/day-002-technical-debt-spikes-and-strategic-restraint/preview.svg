@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" role="img" aria-labelledby="title desc">
+  <title id="title">Day 2 technical debt and strategic restraint</title>
+  <desc id="desc">A simple platform decision log preview for 100daydash.blog.</desc>
+  <rect width="1200" height="630" fill="#101820" />
+  <rect x="72" y="72" width="1056" height="486" fill="#f8f4ec" />
+  <text x="120" y="172" fill="#101820" font-family="Arial, sans-serif" font-size="38" font-weight="700">Day 2 - May 3, 2026</text>
+  <text x="120" y="245" fill="#101820" font-family="Arial, sans-serif" font-size="56" font-weight="700">Technical Debt, Spikes,</text>
+  <text x="120" y="315" fill="#101820" font-family="Arial, sans-serif" font-size="56" font-weight="700">and Strategic Restraint</text>
+  <line x1="120" y1="374" x2="1080" y2="374" stroke="#d45b3f" stroke-width="8" />
+  <text x="120" y="445" fill="#293241" font-family="Arial, sans-serif" font-size="30">Upgrade deliberately. Defer when the return is not there.</text>
+  <text x="120" y="505" fill="#293241" font-family="Arial, sans-serif" font-size="24">Astro v6 migration | Cloudflare provider spike | Governance hardening</text>
+</svg>

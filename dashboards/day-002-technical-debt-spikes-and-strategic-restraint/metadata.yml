@@ -1,0 +1,19 @@
+day: 2
+title: "Technical Debt, Spikes, and Strategic Restraint"
+slug: "technical-debt-spikes-and-strategic-restraint"
+date: "2026-05-03"
+status: "draft"
+summary: "Documents technical debt reduction, platform spike decisions, Astro v6 migration work, and governance hardening."
+data_sources:
+  - name: "100daydash.blog repository"
+    url: "https://100daydash.blog"
+    license: "Project-owned"
+tools:
+  - Astro
+  - Terraform
+  - GitHub Actions
+outputs:
+  - type: post
+    path: ../../web/src/content/blog/day-002-technical-debt-spikes-and-strategic-restraint.md
+  - type: preview
+    path: ../../web/public/media/day-002-technical-debt-spikes-and-strategic-restraint/preview.svg
