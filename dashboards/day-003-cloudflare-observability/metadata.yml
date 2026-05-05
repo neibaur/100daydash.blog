@@ -1,0 +1,22 @@
+day: 3
+title: "From Automation to Observability"
+slug: "cloudflare-observability"
+date: "2026-05-04"
+status: "draft"
+summary: "Documents Cloudflare deployment recovery, CI/CD reliability work, Google Sheets synchronization, and early Looker Studio observability components."
+data_sources:
+  - name: "100daydash.blog repository"
+    url: "https://100daydash.blog"
+    license: "Project-owned"
+  - name: "Cloudflare workflow audit output"
+    url: "https://dash.cloudflare.com"
+    license: "Project-owned operational data"
+tools:
+  - Astro
+  - GitHub Actions
+  - Cloudflare Pages
+  - Google Sheets
+  - Looker Studio
+outputs:
+  - type: post
+    path: ../../web/src/content/blog/day-003-cloudflare-observability.md
