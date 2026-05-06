@@ -1,0 +1,23 @@
+day: 4
+title: "Reusing Platform Infrastructure to Launch a Production Portfolio Site"
+slug: "portfolio-platform-reuse"
+date: "2026-05-05"
+status: "draft"
+summary: "Documents the platform engineering work behind adapting, hardening, and deploying a reusable Hugo portfolio architecture for a production client site."
+data_sources:
+  - name: "Reusable Hugo portfolio architecture"
+    url: "https://gohugo.io"
+    license: "Project-owned implementation using open-source tooling"
+  - name: "Cloudflare DNS and email routing configuration"
+    url: "https://dash.cloudflare.com"
+    license: "Project-owned operational configuration"
+tools:
+  - Hugo
+  - Hugo Blox
+  - pnpm
+  - GitHub Actions
+  - GitHub Pages
+  - Cloudflare
+outputs:
+  - type: post
+    path: ../../web/src/content/blog/day-004-portfolio-platform-reuse.md
