@@ -1,0 +1,24 @@
+day: 5
+title: "From Portfolio Site to Engineering Platform"
+slug: "engineering-the-platform"
+date: "2026-05-06"
+status: "draft"
+summary: "Documents portfolio modernization, cross-repository governance, AI-assisted workflow exploration, and technical storytelling maturity around the dashboard platform ecosystem."
+data_sources:
+  - name: "Founderz Agent-A-Thon"
+    url: "https://founderz.com"
+    license: "Program materials and public learning context"
+  - name: "Microsoft Learn Cosmos DB challenge"
+    url: "https://learn.microsoft.com/en-us/challenges/5dzyaqt2mw65zk/leaderboard?wt.mc_id=challenges_nudge_to_complete_email_learn"
+    license: "Microsoft Learn public challenge"
+tools:
+  - Astro
+  - pnpm
+  - GitHub Actions
+  - CodeQL
+  - Gitleaks
+  - markdownlint
+  - Prettier
+outputs:
+  - type: post
+    path: ../../web/src/content/blog/day-005-engineering-the-platform.md
