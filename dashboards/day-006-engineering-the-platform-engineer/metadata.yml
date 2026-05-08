@@ -1,0 +1,19 @@
+day: 6
+title: "Engineering the Platform Engineer"
+slug: "engineering-the-platform-engineer"
+date: "2026-05-07"
+status: "published"
+summary: "Documents Azure Cosmos DB for NoSQL learning and a technical career infrastructure refactor focused on platform engineering positioning, recruiter discoverability, and public engineering identity consolidation."
+data_sources:
+  - name: "Microsoft Learn Azure Cosmos DB for NoSQL module"
+    url: "https://learn.microsoft.com/en-us/training/modules/build-query-azure-cosmos-db-sql-api/"
+    license: "Microsoft Learn public training content"
+tools:
+  - Azure Cosmos DB
+  - Microsoft Learn
+  - LinkedIn
+  - GitHub
+  - Astro
+outputs:
+  - type: post
+    path: ../../web/src/content/blog/day-006-engineering-the-platform-engineer.md
