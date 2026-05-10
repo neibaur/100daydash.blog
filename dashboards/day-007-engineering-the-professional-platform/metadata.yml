@@ -1,0 +1,21 @@
+day: 7
+title: "Engineering the Professional Platform"
+slug: "engineering-the-professional-platform"
+date: "2026-05-08"
+status: "published"
+summary: "Documents a professional platform engineering day focused on profile discoverability, GitHub governance, dependency maintenance, deployment reliability, Cosmos DB learning, and AI-assisted certification workflows."
+data_sources:
+  - name: "Microsoft Learn Cosmos DB Conf Skills Challenge"
+    url: "https://learn.microsoft.com/en-us/challenges/5dzyaqt2mw65zk/leaderboard?wt.mc_id=challenges_challenge_has_ended_email_learn"
+    license: "Microsoft Learn public challenge content"
+tools:
+  - Microsoft Learn
+  - Azure Cosmos DB
+  - GitHub
+  - Dependabot
+  - GitHub Actions
+  - Google NotebookLM
+  - Astro
+outputs:
+  - type: post
+    path: ../../web/src/content/blog/day-007-engineering-the-professional-platform.md
