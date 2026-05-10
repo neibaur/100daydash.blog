@@ -184,6 +184,8 @@ def validate_data_sources(
         return
 
     for index, source in enumerate(value):
+        if isinstance(source, str) and source and not require_license:
+            continue
         if not isinstance(source, dict):
             errors.append(f"{path}: {field_name}[{index}] must be an object")
             continue
@@ -251,17 +253,18 @@ def validate_blog_posts(
         if day is None or slug is None:
             continue
 
-        dashboard_dir = dashboards_dir / slug
-        if not dashboard_dir.exists():
-            errors.append(f"{post.path}: missing dashboard folder {dashboard_dir}")
+        if slug != "none":
+            dashboard_dir = dashboards_dir / slug
+            if not dashboard_dir.exists():
+                errors.append(f"{post.path}: missing dashboard folder {dashboard_dir}")
 
-        folder_parts = parse_folder_parts(slug)
-        if folder_parts is None:
-            errors.append(f"{post.path}: dashboardSlug must match day-NNN-slug")
-        elif folder_parts[0] != day:
-            errors.append(
-                f"{post.path}: day {day} does not match dashboardSlug day {folder_parts[0]}"
-            )
+            folder_parts = parse_folder_parts(slug)
+            if folder_parts is None:
+                errors.append(f"{post.path}: dashboardSlug must match day-NNN-slug")
+            elif folder_parts[0] != day:
+                errors.append(
+                    f"{post.path}: day {day} does not match dashboardSlug day {folder_parts[0]}"
+                )
 
         previous_day = seen_days.get(day)
         if previous_day is not None:
