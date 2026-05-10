@@ -17,10 +17,13 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     dataSources: z
       .array(
-        z.object({
-          name: z.string(),
-          url: z.string().url(),
-        }),
+        z.union([
+          z.string(),
+          z.object({
+            name: z.string(),
+            url: z.string().url(),
+          }),
+        ]),
       )
       .default([]),
     heroImage: z.string().optional(),
