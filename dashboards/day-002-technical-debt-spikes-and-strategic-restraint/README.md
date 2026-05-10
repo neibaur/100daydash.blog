@@ -52,12 +52,3 @@ This artifact documents platform work rather than a data visualization.
 
 Revisit the Cloudflare Terraform Provider v5 migration when the infrastructure
 repository has a stronger reason to absorb the breaking-change cost.
-<<<<<<< HEAD
-
-## 📅 Progress
-
-- Day 0: System design
-- Day 1: Infrastructure foundation
-- Day 2: Technical debt & platform decisions
-=======
->>>>>>> 0b8e997 (feat(blog): add Day 2 post (technical debt, Astro v6 migration, governance hardening))
