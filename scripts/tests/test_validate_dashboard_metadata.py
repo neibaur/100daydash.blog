@@ -23,10 +23,11 @@ def write_post(
     slug: str = "day-001-us-ev-sales-trend",
     status: str = "draft",
     data_source_url: str = "https://example.com",
-    hero_image: str = "/media/day-001-us-ev-sales-trend/preview.png",
+    hero_image: str | None = "/media/day-001-us-ev-sales-trend/preview.png",
 ) -> Path:
     blog_dir.mkdir(parents=True, exist_ok=True)
     post = blog_dir / filename
+    hero_image_field = f'heroImage: "{hero_image}"\n' if hero_image is not None else ""
     post.write_text(
         f"""---
 title: "Day 001: US EV Sales Trend"
@@ -40,8 +41,7 @@ tags:
 dataSources:
   - name: "Example"
     url: "{data_source_url}"
-heroImage: "{hero_image}"
----
+{hero_image_field}---
 Body
 """,
         encoding="utf-8",
@@ -128,6 +128,23 @@ def test_validate_repository_reports_duplicate_days_and_slugs(tmp_path: Path) ->
 
     assert any("duplicate day 1" in error for error in errors)
     assert any("duplicate slug day-001-us-ev-sales-trend" in error for error in errors)
+
+
+def test_validate_repository_allows_repeated_none_dashboard_slug(tmp_path: Path) -> None:
+    module = load_module()
+    blog_dir = tmp_path / "web" / "src" / "content" / "blog"
+    dashboards_dir = tmp_path / "dashboards"
+    write_post(blog_dir, "day-008-operations.md", day=8, slug="none", hero_image=None)
+    write_post(blog_dir, "day-009-operations.md", day=9, slug="none", hero_image=None)
+
+    errors = module.validate_repository(
+        module.load_posts(blog_dir),
+        module.load_dashboards(dashboards_dir),
+        tmp_path,
+        dashboards_dir,
+    )
+
+    assert errors == []
 
 
 def test_validate_repository_reports_invalid_blog_metadata(tmp_path: Path) -> None:
