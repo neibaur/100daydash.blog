@@ -271,10 +271,11 @@ def validate_blog_posts(
             errors.append(f"{post.path}: duplicate day {day} also used by {previous_day}")
         seen_days[day] = post.path
 
-        previous_slug = seen_slugs.get(slug)
-        if previous_slug is not None:
-            errors.append(f"{post.path}: duplicate slug {slug} also used by {previous_slug}")
-        seen_slugs[slug] = post.path
+        if slug != "none":
+            previous_slug = seen_slugs.get(slug)
+            if previous_slug is not None:
+                errors.append(f"{post.path}: duplicate slug {slug} also used by {previous_slug}")
+            seen_slugs[slug] = post.path
 
         hero_image = post.fields.get("heroImage")
         if hero_image is not None:
