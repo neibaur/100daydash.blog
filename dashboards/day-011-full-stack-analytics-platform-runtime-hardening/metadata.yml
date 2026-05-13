@@ -1,0 +1,37 @@
+day: 11
+title: "Full-Stack Analytics Platform and Runtime Hardening"
+slug: "full-stack-analytics-platform-runtime-hardening"
+date: "2026-05-13"
+status: "published"
+summary: "Documents the milestone where Tech Talent Pulse evolved from backend analytics APIs into an early full-stack analytics platform with orchestration, advanced analytics, Astro dashboard visualization, and local runtime hardening."
+data_sources:
+  - name: "Spring Boot"
+    url: "https://spring.io/projects/spring-boot"
+    license: "Public project documentation"
+  - name: "Astro"
+    url: "https://astro.build/"
+    license: "Public project documentation"
+  - name: "React"
+    url: "https://react.dev/"
+    license: "Public project documentation"
+  - name: "Recharts"
+    url: "https://recharts.org/"
+    license: "Public project documentation"
+  - name: "PostgreSQL"
+    url: "https://www.postgresql.org/"
+    license: "Public project documentation"
+tools:
+  - Java 21
+  - Spring Boot
+  - PostgreSQL
+  - Docker Compose
+  - Maven
+  - Astro
+  - TypeScript
+  - React
+  - Recharts
+outputs:
+  - type: post
+    path: ../../web/src/content/blog/day-011-full-stack-analytics-platform-runtime-hardening.md
+  - type: local-dashboard
+    path: localhost Astro dashboard backed by Tech Talent Pulse analytics APIs
