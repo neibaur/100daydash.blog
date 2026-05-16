@@ -1,7 +1,7 @@
 ---
-title: "Day 9 - May 11, 2026: Agent Learning and Dependency Governance"
+title: "Day 9 - May 10, 2026: Agent Learning and Dependency Governance"
 description: "Connecting Founderz Agent Explorer learning with dependency security governance, pnpm lockfile recovery, and a simpler trunk-based branch strategy for 100daydash.blog."
-pubDate: "2026-05-11"
+pubDate: "2026-05-10"
 day: 9
 dashboardSlug: "none"
 status: "draft"

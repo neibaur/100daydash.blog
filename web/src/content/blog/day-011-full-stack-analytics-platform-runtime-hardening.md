@@ -1,7 +1,7 @@
 ---
-title: "Day 11 - May 13, 2026: Full-Stack Analytics Platform and Runtime Hardening"
+title: "Day 11 - May 12, 2026: Full-Stack Analytics Platform and Runtime Hardening"
 description: "Documenting the day Tech Talent Pulse evolved from backend analytics APIs into an early full-stack analytics platform with orchestration, advanced analytics, Astro dashboard visualization, and local runtime hardening."
-pubDate: "2026-05-13"
+pubDate: "2026-05-12"
 day: 11
 dashboardSlug: "day-011-full-stack-analytics-platform-runtime-hardening"
 status: "published"

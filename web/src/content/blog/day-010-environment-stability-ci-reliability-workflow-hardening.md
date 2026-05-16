@@ -1,7 +1,7 @@
 ---
-title: "Day 10 - May 12, 2026: Environment Stability, CI Reliability, and Workflow Hardening"
+title: "Day 10 - May 11, 2026: Environment Stability, CI Reliability, and Workflow Hardening"
 description: "Documenting an operational maturity day focused on Docker Desktop stability, Flyway migration reliability, CI parity, Git branch hygiene, and continued Java platform workflow hardening."
-pubDate: "2026-05-12"
+pubDate: "2026-05-11"
 day: 10
 dashboardSlug: "none"
 status: "published"
