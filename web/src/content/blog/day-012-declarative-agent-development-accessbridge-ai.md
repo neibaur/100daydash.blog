@@ -1,7 +1,7 @@
 ---
-title: "Day 12 - May 14, 2026: Declarative Agent Development and AccessBridge AI"
+title: "Day 12 - May 13, 2026: Declarative Agent Development and AccessBridge AI"
 description: "Designing AccessBridge AI, an accessibility-focused declarative assistant in Microsoft Copilot Studio Lite, while documenting responsible AI guardrails, trusted-source grounding, and licensing constraints."
-pubDate: "2026-05-14"
+pubDate: "2026-05-13"
 day: 12
 dashboardSlug: "none"
 status: "published"

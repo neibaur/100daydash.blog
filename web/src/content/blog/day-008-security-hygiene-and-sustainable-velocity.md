@@ -1,7 +1,7 @@
 ---
-title: "Day 8 - May 10, 2026: Security Hygiene and Sustainable Velocity"
+title: "Day 8 - May 9, 2026: Security Hygiene and Sustainable Velocity"
 description: "Documenting a lighter operational day focused on dependency security hygiene, spike-branch isolation, and sustainable engineering pace."
-pubDate: "2026-05-10"
+pubDate: "2026-05-9"
 day: 8
 dashboardSlug: "none"
 status: "draft"
