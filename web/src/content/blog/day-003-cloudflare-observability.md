@@ -4,7 +4,7 @@ description: "Resolving repository connection hurdles and transitioning infrastr
 pubDate: 2026-05-04
 day: 3
 dashboardSlug: "day-003-cloudflare-observability"
-status: "draft"
+status: "published"
 tags:
   - dashboard
   - platform-engineering

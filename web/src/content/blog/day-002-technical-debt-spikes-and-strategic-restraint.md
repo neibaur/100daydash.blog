@@ -4,7 +4,7 @@ description: "Documenting technical debt reduction, platform spikes, Astro v6 mi
 pubDate: "2026-05-03"
 day: 2
 dashboardSlug: "day-002-technical-debt-spikes-and-strategic-restraint"
-status: "draft"
+status: "published"
 tags:
   - dashboard
   - platform-engineering

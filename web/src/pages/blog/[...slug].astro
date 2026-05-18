@@ -1,20 +1,64 @@
 ---
 import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 
-export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+type BlogPost = CollectionEntry<"blog">;
 
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+export async function getStaticPaths() {
+  const getPostTime = (post: BlogPost) => {
+    const parsedDate = new Date(post.data.pubDate).getTime();
+
+    if (Number.isFinite(parsedDate)) {
+      return parsedDate;
+    }
+
+    return post.data.day;
+  };
+
+  const toEntryNavItem = (post: BlogPost) => ({
+    day: post.data.day,
+    href: `/blog/${post.id}/`,
+    title: post.data.title || `Day ${post.data.day}`,
+  });
+
+  const posts = await getCollection("blog");
+  const publishedPosts = posts
+    .filter((post) => post.data.status === "published")
+    .sort((a, b) => getPostTime(a) - getPostTime(b) || a.data.day - b.data.day);
+
+  return posts.map((post) => {
+    const currentIndex = publishedPosts.findIndex(
+      (entry) => entry.id === post.id,
+    );
+    const previousEntry =
+      currentIndex > 0
+        ? toEntryNavItem(publishedPosts[currentIndex - 1])
+        : undefined;
+    const nextEntry =
+      currentIndex >= 0 && currentIndex < publishedPosts.length - 1
+        ? toEntryNavItem(publishedPosts[currentIndex + 1])
+        : undefined;
+
+    return {
+      params: { slug: post.id },
+      props: {
+        post,
+        previousEntry,
+        nextEntry,
+      },
+    };
+  });
 }
 
-const { post } = Astro.props;
+const { nextEntry, post, previousEntry } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPostLayout frontmatter={post.data}>
+<BlogPostLayout
+  frontmatter={post.data}
+  nextEntry={nextEntry}
+  previousEntry={previousEntry}
+>
   <Content />
 </BlogPostLayout>

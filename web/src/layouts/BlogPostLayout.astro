@@ -1,5 +1,5 @@
 ---
-const { frontmatter } = Astro.props;
+const { frontmatter, nextEntry, previousEntry } = Astro.props;
 import "../styles/global.css";
 ---
 
@@ -22,6 +22,34 @@ import "../styles/global.css";
           <p>{frontmatter.description}</p>
         </header>
         <slot />
+        {
+          (previousEntry || nextEntry) && (
+            <nav class="entry-nav" aria-label="Journal entry navigation">
+              {previousEntry ? (
+                <a class="entry-nav-link" href={previousEntry.href} rel="prev">
+                  <span>Previous Entry</span>
+                  <strong>
+                    {previousEntry.title || `Day ${previousEntry.day}`}
+                  </strong>
+                </a>
+              ) : (
+                <span class="entry-nav-spacer" aria-hidden="true" />
+              )}
+              {nextEntry ? (
+                <a
+                  class="entry-nav-link entry-nav-link-next"
+                  href={nextEntry.href}
+                  rel="next"
+                >
+                  <span>Next Entry</span>
+                  <strong>{nextEntry.title || `Day ${nextEntry.day}`}</strong>
+                </a>
+              ) : (
+                <span class="entry-nav-spacer" aria-hidden="true" />
+              )}
+            </nav>
+          )
+        }
       </article>
     </main>
   </body>

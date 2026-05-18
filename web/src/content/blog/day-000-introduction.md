@@ -4,7 +4,7 @@ description: "Setting up the foundation for 100 dashboards in 100 days."
 pubDate: "2026-05-01"
 day: 0
 dashboardSlug: "day-000-introduction"
-status: "draft"
+status: "published"
 tags:
   - dashboard
   - project-setup

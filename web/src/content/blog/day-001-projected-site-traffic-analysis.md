@@ -4,7 +4,7 @@ description: "Clearing the final hurdles in CI/CD and domain routing to secure t
 pubDate: "2026-05-02"
 day: 1
 dashboardSlug: "day-001-projected-site-traffic-analysis"
-status: "draft"
+status: "published"
 tags:
   - dashboard
   - python

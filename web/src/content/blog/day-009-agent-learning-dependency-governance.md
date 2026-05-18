@@ -4,7 +4,7 @@ description: "Connecting Founderz Agent Explorer learning with dependency securi
 pubDate: "2026-05-10"
 day: 9
 dashboardSlug: "none"
-status: "draft"
+status: "published"
 tags:
   - platform-engineering
   - ai-agents

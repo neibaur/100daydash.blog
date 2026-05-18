@@ -4,7 +4,7 @@ description: "Documenting the platform engineering work behind adapting, hardeni
 pubDate: "2026-05-05"
 day: 4
 dashboardSlug: "day-004-portfolio-platform-reuse"
-status: "draft"
+status: "published"
 tags:
   - platform-engineering
   - ci-cd
