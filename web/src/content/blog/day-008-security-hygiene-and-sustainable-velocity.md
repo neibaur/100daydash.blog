@@ -4,7 +4,7 @@ description: "Documenting a lighter operational day focused on dependency securi
 pubDate: "2026-05-9"
 day: 8
 dashboardSlug: "none"
-status: "draft"
+status: "published"
 tags:
   - platform-engineering
   - security

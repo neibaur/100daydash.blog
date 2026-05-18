@@ -4,7 +4,7 @@ description: "Documenting the shift from portfolio modernization into a broader 
 pubDate: "2026-05-06"
 day: 5
 dashboardSlug: "day-005-engineering-the-platform"
-status: "draft"
+status: "published"
 tags:
   - platform-engineering
   - portfolio
