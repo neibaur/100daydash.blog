@@ -26,7 +26,7 @@ a {
 }
 
 .home-hero {
-  padding: 72px 0 48px;
+  padding: 48px 0;
 }
 
 .home-hero p:first-child,
@@ -78,6 +78,58 @@ h2 {
   display: inline-block;
   margin-top: 32px;
   text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.site-nav .site-link {
+  margin-top: 32px;
+}
+
+.search-hero {
+  padding-bottom: 32px;
+}
+
+.search-panel {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.search-label {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.search-input {
+  width: 100%;
+  border: 1px solid #b6c6d9;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #152033;
+  font: inherit;
+  font-size: 1.1rem;
+  padding: 14px 16px;
+}
+
+.search-input:focus {
+  border-color: #075985;
+  outline: 3px solid #bae6fd;
+}
+
+.search-status,
+.search-empty {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
 }
 
 .post {

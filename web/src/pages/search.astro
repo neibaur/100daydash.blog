@@ -1,0 +1,221 @@
+---
+import { getCollection } from "astro:content";
+import "../styles/global.css";
+
+const stripMarkdown = (value: string) =>
+  value
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, " ")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[#>*_~|=-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+    timeZone: "UTC",
+  }).format(date);
+
+const posts = await getCollection("blog");
+const publishedPosts = posts
+  .filter((post) => post.data.status === "published")
+  .sort((a, b) => b.data.day - a.data.day);
+
+const searchIndex = publishedPosts.map((post) => {
+  const plainBody = stripMarkdown(post.body ?? "");
+  const description = post.data.description;
+
+  return {
+    date: formatDate(post.data.pubDate),
+    day: post.data.day,
+    description,
+    href: `/blog/${post.id}/`,
+    searchText: [
+      post.data.title,
+      description,
+      post.id,
+      post.data.dashboardSlug,
+      plainBody,
+    ]
+      .join(" ")
+      .toLowerCase(),
+    title: post.data.title,
+  };
+});
+
+const recentPosts = searchIndex.slice(0, 5);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Search published 100daydash.blog journal entries by keyword."
+    />
+    <title>Search | 100daydash.blog</title>
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <main class="home-shell">
+      <nav class="site-nav" aria-label="Site navigation">
+        <a class="site-link" href="/">100daydash.blog</a>
+        <a class="site-link" href="/search/" aria-current="page">Search</a>
+      </nav>
+
+      <section class="home-hero search-hero">
+        <p>Journal search</p>
+        <h1>Search published entries</h1>
+        <p>
+          Find notes from the 100-day dashboard sprint by keyword, tool, topic,
+          or day.
+        </p>
+      </section>
+
+      <section class="search-panel" aria-labelledby="search-label">
+        <label id="search-label" class="search-label" for="search-input">
+          Keyword
+        </label>
+        <input
+          id="search-input"
+          class="search-input"
+          type="search"
+          name="q"
+          autocomplete="off"
+          placeholder="Try terraform, Cloudflare, CI, or Day 12"
+        />
+        <p
+          id="search-status"
+          class="search-status"
+          role="status"
+          aria-live="polite"
+        >
+          Showing recent published entries.
+        </p>
+      </section>
+
+      <section class="post-list" aria-labelledby="search-results-heading">
+        <h2 id="search-results-heading">Results</h2>
+        <div id="search-results" class="search-results"></div>
+      </section>
+    </main>
+
+    <script
+      id="search-index"
+      type="application/json"
+      is:inline
+      set:html={JSON.stringify({
+        entries: searchIndex,
+        recent: recentPosts,
+      }).replace(/</g, "\\u003c")}
+    />
+    <script is:inline>
+      /**
+       * @typedef {object} SearchEntry
+       * @property {string} date
+       * @property {number} day
+       * @property {string} description
+       * @property {string} href
+       * @property {string} searchText
+       * @property {string} title
+       */
+
+      const indexElement = document.getElementById("search-index");
+      const input = document.getElementById("search-input");
+      const results = document.getElementById("search-results");
+      const status = document.getElementById("search-status");
+
+      if (
+        !(indexElement instanceof HTMLScriptElement) ||
+        !(input instanceof HTMLInputElement) ||
+        !(results instanceof HTMLElement) ||
+        !(status instanceof HTMLElement)
+      ) {
+        throw new Error("Search page markup is missing required elements.");
+      }
+
+      /** @type {{ entries: SearchEntry[]; recent: SearchEntry[] }} */
+      const searchData = JSON.parse(indexElement.textContent ?? "{}");
+      const { entries, recent } = searchData;
+
+      const clearResults = () => {
+        while (results.firstChild) {
+          results.removeChild(results.firstChild);
+        }
+      };
+
+      /** @param {SearchEntry} entry */
+      const buildResult = (entry) => {
+        const article = document.createElement("article");
+
+        const meta = document.createElement("p");
+        meta.textContent = `Day ${entry.day} | ${entry.date}`;
+
+        const heading = document.createElement("h3");
+        const link = document.createElement("a");
+        link.href = entry.href;
+        link.textContent = entry.title;
+        link.setAttribute("aria-label", `Read ${entry.title}`);
+        heading.append(link);
+
+        const description = document.createElement("p");
+        description.textContent = entry.description;
+
+        article.append(meta, heading, description);
+        return article;
+      };
+
+      /**
+       * @param {SearchEntry[]} matches
+       * @param {string} query
+       */
+      const renderResults = (matches, query) => {
+        clearResults();
+
+        if (matches.length === 0) {
+          const message = document.createElement("p");
+          message.className = "search-empty";
+          message.textContent = query
+            ? `No published entries match "${query}".`
+            : "Showing recent published entries.";
+          results.append(message);
+          status.textContent = query
+            ? `No published entries match ${query}.`
+            : "Showing recent published entries.";
+          return;
+        }
+
+        for (const entry of matches) {
+          results.append(buildResult(entry));
+        }
+
+        status.textContent = query
+          ? `${matches.length} published ${matches.length === 1 ? "entry" : "entries"} found for ${query}.`
+          : "Showing recent published entries.";
+      };
+
+      const search = () => {
+        const query = input.value.trim().toLowerCase();
+
+        if (!query) {
+          renderResults(recent, "");
+          return;
+        }
+
+        const terms = query.split(/\s+/);
+        const matches = entries.filter((entry) =>
+          terms.every((term) => entry.searchText.includes(term)),
+        );
+
+        renderResults(matches, input.value.trim());
+      };
+
+      input.addEventListener("input", search);
+      renderResults(recent, "");
+    </script>
+  </body>
+</html>
