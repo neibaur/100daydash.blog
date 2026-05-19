@@ -29,7 +29,7 @@ The priority was system stability over visible output.
 
 Several priorities competed across two repositories:
 
-- Cloudflare Infrastructure as Code repository
+- `cloudflare-iac-governance` repository
 - `100daydash.blog` repository
 
 The main engineering tradeoff was upgrade risk versus immediate value.
