@@ -21,7 +21,7 @@ const blog = defineCollection({
           z.string(),
           z.object({
             name: z.string(),
-            url: z.string().url(),
+            url: z.url(),
           }),
         ]),
       )
