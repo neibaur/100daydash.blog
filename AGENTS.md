@@ -1460,6 +1460,11 @@ Mock, fixture, sample, and synthetic data must be clearly separated from real da
 
 ## 15.6 Validation Commands
 
+When validating dependency updates, AI agents should:
+- Prefer validation commands documented in package.json, CI workflows, AGENTS.md, README, or repository scripts.
+- Report missing commands but do not treat undocumented commands as failures.
+- Do not invent validation commands that are not part of the repository contract.
+
 Use the narrowest validation needed while working, then run the relevant final checks before declaring completion:
 
 ```bash
