@@ -1,8 +1,8 @@
 ---
-title: "Day 34 - June 3, 2026: From Core Platform Architecture to the UseThai Dictionary Shell"
+title: "Day 33 - June 3, 2026: From Core Platform Architecture to the UseThai Dictionary Shell"
 description: "Moving from Phase 15 governance review into the first UseThai application shell, proving a browser-to-core Thai dictionary lookup while exposing search UX limits."
 pubDate: "2026-06-03"
-day: 34
+day: 33
 dashboardSlug: "none"
 dataSources:
   - "Astro"
@@ -20,7 +20,7 @@ tags:
   - typescript
 ---
 
-Day 34 marked a real transition point for `lingua-core-platform`.
+Day 33 marked a real transition point for `lingua-core-platform`.
 
 The recent work had been mostly architectural: phase boundaries, governance
 reviews, tenant configuration, canonical language tags, and repository-first
@@ -320,7 +320,7 @@ platform that can be used by an application.
 
 ## Outcome
 
-Day 34 shifted `lingua-core-platform` from pure core architecture work toward
+Day 33 shifted `lingua-core-platform` from pure core architecture work toward
 the first user-facing UseThai experience.
 
 Phase 15 governance review concluded that no immediately derivable core slice
@@ -347,7 +347,7 @@ lookup behavior a real learner will expect.
 
 ## Definition Of Done
 
-Day 34 reached a meaningful application-shell checkpoint:
+Day 33 reached a meaningful application-shell checkpoint:
 
 - reviewed Phase 15 governance after the first implementation slice
 - confirmed no immediately derivable additional Phase 15 core slice remains
