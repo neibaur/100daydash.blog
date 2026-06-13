@@ -7,9 +7,11 @@
     "build": "pnpm --dir web build",
     "dev": "pnpm --dir web dev",
     "lint": "pnpm --dir web lint",
+    "format": "pnpm --dir web format",
     "format:check": "pnpm --dir web format:check",
     "typecheck": "pnpm --dir web typecheck",
     "test": "pnpm --dir web test",
+    "validate": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test && pnpm build",
     "prepare": "husky install"
   },
   "devDependencies": {
