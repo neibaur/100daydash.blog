@@ -57,13 +57,9 @@ jobs:
             --baseline .secrets.baseline \
             --exclude-files "(^|[\\/])(.venv|venv|node_modules|dist|build|coverage|htmlcov|.astro|.git|.mypy_cache|.pytest_cache|.ruff_cache|__pycache__)([\\/]|$)|^\.secrets\.baseline$|^uv\.lock$|^pnpm-lock\.yaml$"
 
-  web-quality:
-    name: Web Quality
+  web-lint:
+    name: Web Lint
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: web
 
     steps:
       - name: Checkout repository
@@ -83,16 +79,100 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm --dir web lint
+
+  web-format:
+    name: Web Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Format check
-        run: pnpm format:check
+        run: pnpm --dir web format:check
+
+  web-typecheck:
+    name: Web Typecheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Typecheck
-        run: pnpm typecheck
+        run: pnpm --dir web typecheck
+
+  web-test:
+    name: Web Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: pnpm test
+        run: pnpm --dir web test
+
+  web-build:
+    name: Web Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm --dir web build
