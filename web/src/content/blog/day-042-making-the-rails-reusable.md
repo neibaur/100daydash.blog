@@ -319,6 +319,11 @@ The planned or completed dispositions included:
 - adding `.claude/settings.json` with harness-level deny rules
 - documenting the limits of harness-level secret protection
 - backporting Dependabot and Claude settings to Terminal Run
+- adding root validation scripts that delegate to the `web` package
+- making `pnpm validate` usable from the repository root
+- clarifying the repo-standard Prettier check and write workflow
+- splitting the bundled web validation job into explicit CI checks
+- making `CI / Web Format` directly requireable in the branch ruleset
 
 The Dependabot grouping is a modest example of why the template matters.
 
@@ -332,6 +337,41 @@ The remediation work also preserved the value of the `NOT CLEAN` audit.
 
 The goal was not to make the verdict disappear. The goal was to turn each
 finding into a decision with visible evidence.
+
+## Tightening The Validation Rails
+
+After the main Terminal Run work, I also closed a smaller but important repo
+usability gap in `100daydash.blog` itself.
+
+Running `pnpm validate` from the repository root exposed a simple problem:
+the root package did not yet define a `validate` script. That was not a
+security failure, but it did mean the standard validation path was not
+discoverable from the top level.
+
+The fix was to add root scripts that delegate to the `web` package so the
+expected commands live where they are easiest to find:
+
+- `build`
+- `dev`
+- `lint`
+- `format`
+- `format:check`
+- `typecheck`
+- `test`
+- `validate`
+
+That cleanup also clarified the formatting workflow. A few posts had reached
+`main` before Prettier had been run, so formatting needed to be treated as a
+first-class gate rather than a memory exercise. The repo-standard path is to
+use the pnpm-managed `web` scripts for checking and writing formatting,
+which keeps the right command close to the rest of the validation flow.
+
+CI followed the same principle. The broader web validation job was split
+into explicit `Web Lint`, `Web Format`, `Web Typecheck`, `Web Test`, and
+`Web Build` jobs so formatting is visible as its own check and can be
+required directly through the branch ruleset. Mechanically the change was
+small, but operationally it turned "remember to run the right command" into
+a repo guardrail that is easier to understand and harder to skip.
 
 ## Solving Organization-Level Required Checks
 
