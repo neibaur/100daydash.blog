@@ -6,6 +6,7 @@ day: 46
 dashboardSlug: "none"
 dataSources:
   - "Agent Tools & Interoperability whitepaper"
+  - "Day 2 whitepaper PDF"
   - "Hands-on with Antigravity CLI codelab"
   - "Google Developer Knowledge MCP server codelab"
   - "GitHub organization ruleset test notes"
@@ -31,8 +32,8 @@ protocols are not just plumbing. They are governance boundaries.
 
 ## The Whitepaper Backbone
 
-The attached whitepaper, _Agent Tools & Interoperability_, gave me the clearest
-mental model for the day.
+The [Day 2 whitepaper PDF, _Agent Tools & Interoperability_](https://drive.google.com/file/d/1_emw2Pj1aecYZe4LKFcL8-zMDeBBRgQF/view)
+gave me the clearest mental model for the day.
 
 Its main point is that the next stage of software is not just humans writing
 code directly. It is orchestration by interoperable agents. That is a useful

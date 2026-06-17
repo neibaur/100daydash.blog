@@ -6,6 +6,7 @@ day: 45
 dashboardSlug: "none"
 dataSources:
   - "Kaggle whitepaper page"
+  - "Day 1 whitepaper PDF"
   - "Google Antigravity codelab"
   - "AI Studio to Cloud Run codelab"
   - "local project-template governance notes"
@@ -29,6 +30,7 @@ conversations that ended up reinforcing the same lesson.
 One conversation was the first day of Kaggle's 5-Day Agentic AI course,
 starting with the whitepaper [The New SDLC With Vibe Coding: From ad-hoc
 prompting to Agentic Engineering](https://www.kaggle.com/whitepaper-the-new-SDLC-with-vibe-coding?utm_medium=email&utm_source=gamma&utm_campaign=learn-intensive-assignment1-june-2026),
+also available as the [Day 1 whitepaper PDF](https://drive.google.com/file/d/1IR7CddF_2FyQo_PdfBNTaEA50EGiVt2r/view),
 the [Getting Started with Google Antigravity](https://codelabs.developers.google.com/getting-started-google-antigravity#0)
 codelab, and the [Deploy from AI Studio to Cloud Run](https://codelabs.developers.google.com/deploy-from-aistudio-to-run?hl=en#0)
 codelab.
@@ -330,6 +332,7 @@ Day 45 reached a reflection-and-governance checkpoint:
 
 - completed the Kaggle / Google 5-Day Agentic AI Day 1 materials
 - reviewed the whitepaper [The New SDLC With Vibe Coding](https://www.kaggle.com/whitepaper-the-new-SDLC-with-vibe-coding?utm_medium=email&utm_source=gamma&utm_campaign=learn-intensive-assignment1-june-2026)
+  and the [Day 1 whitepaper PDF](https://drive.google.com/file/d/1IR7CddF_2FyQo_PdfBNTaEA50EGiVt2r/view)
 - worked through [Getting Started with Google Antigravity](https://codelabs.developers.google.com/getting-started-google-antigravity#0)
 - worked through [Deploy from AI Studio to Cloud Run](https://codelabs.developers.google.com/deploy-from-aistudio-to-run?hl=en#0)
 - connected the whitepaper's spectrum of vibe coding, structured AI-assisted
