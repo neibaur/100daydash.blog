@@ -1,0 +1,3 @@
+Contact: mailto:hello@100daydash.blog
+Preferred-Languages: en
+Canonical: https://100daydash.blog/.well-known/security.txt
