@@ -1,3 +1,4 @@
 Contact: mailto:hello@100daydash.blog
+Expires: 2056-06-18T18:00:00.000Z
 Preferred-Languages: en
 Canonical: https://100daydash.blog/.well-known/security.txt
