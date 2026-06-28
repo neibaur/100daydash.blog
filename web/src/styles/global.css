@@ -140,13 +140,13 @@ h2 {
   margin-bottom: 40px;
 }
 
-.post :global(p),
-.post :global(li) {
+.post p,
+.post li {
   font-size: 1.05rem;
   line-height: 1.75;
 }
 
-.post :global(img) {
+.post img {
   max-width: 100%;
   height: auto;
   border: 1px solid #d9e2ef;
