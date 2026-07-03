@@ -1,0 +1,2 @@
+# Keep Markdown posts stable for Prettier on Windows checkouts.
+*.md text eol=lf
