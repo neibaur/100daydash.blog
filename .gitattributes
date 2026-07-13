@@ -1,2 +1,9 @@
-# Keep Markdown posts stable for Prettier on Windows checkouts.
+# Keep Prettier-managed text stable on Windows checkouts.
+*.astro text eol=lf
+*.cjs text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
 *.md text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
