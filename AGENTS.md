@@ -1458,7 +1458,30 @@ Mock, fixture, sample, and synthetic data must be clearly separated from real da
 - Do not use mock or test credentials against real state, production systems, real credentials, or irreversible data operations.
 - Document data source licensing and limitations in dashboard README files or blog frontmatter.
 
-## 15.6 Validation Commands
+## 15.6 GitHub CLI Authentication on Windows
+
+Codex command sessions may receive an incorrect `APPDATA` value, causing `gh`
+to report that no GitHub host is authenticated even when the user has already
+completed `gh auth login`.
+
+Before concluding that authentication is missing, run GitHub CLI commands with:
+
+```powershell
+$env:GH_CONFIG_DIR = "$env:USERPROFILE\AppData\Roaming\GitHub CLI"
+gh auth status --hostname github.com
+```
+
+Use the same `GH_CONFIG_DIR` setting for subsequent `gh` commands in that
+session.
+
+Do not display or read `hosts.yml`, access tokens, or credential contents.
+Do not ask the user to authenticate again unless the explicit configuration
+directory also reports that authentication is missing or invalid.
+
+The persistent environment variable is the actual fix; this note helps future
+agents diagnose the issue quickly if the variable is not inherited.
+
+## 15.7 Validation Commands
 
 When validating dependency updates, AI agents should:
 - Prefer validation commands documented in package.json, CI workflows, AGENTS.md, README, or repository scripts.
@@ -1486,7 +1509,7 @@ pnpm --filter web typecheck
 pnpm --filter web test
 ```
 
-## 15.7 AI Definition of Done
+## 15.8 AI Definition of Done
 
 AI-assisted changes are done when:
 
