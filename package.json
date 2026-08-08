@@ -23,10 +23,11 @@
       "brace-expansion": "5.0.9",
       "fast-uri": "3.1.5",
       "yaml": "2.9.0",
-      "postcss": ">=8.5.10",
+      "nanoid": "3.3.17",
+      "postcss": ">=8.5.23",
       "esbuild": ">=0.28.1",
-      "astro>js-yaml": "4.3.0",
-      "@astrojs/internal-helpers>js-yaml": "4.3.0"
+      "astro>js-yaml": "4.3.1",
+      "@astrojs/internal-helpers>js-yaml": "4.3.1"
     }
   }
 }
