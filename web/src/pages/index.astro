@@ -21,8 +21,12 @@ const sortedPosts = posts.sort((a, b) => b.data.day - a.data.day);
   <body>
     <main class="home-shell">
       <nav class="site-nav" aria-label="Site navigation">
-        <a class="site-link" href="/">100daydash.blog</a>
-        <a class="site-link" href="/search/">Search</a>
+        <a class="site-link" href="/">
+          100daydash.blog
+        </a>
+        <a class="site-link" href="/search/">
+          Search
+        </a>
       </nav>
 
       <section class="home-hero">
@@ -100,17 +104,15 @@ const sortedPosts = posts.sort((a, b) => b.data.day - a.data.day);
 
       <section class="post-list" aria-labelledby="latest-posts">
         <h2 id="latest-posts">Latest Posts</h2>
-        {
-          sortedPosts.map((post) => (
-            <article>
-              <p>Day {post.data.day}</p>
-              <h3>
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-              </h3>
-              <p>{post.data.description}</p>
-            </article>
-          ))
-        }
+        {sortedPosts.map((post) => (
+          <article>
+            <p>Day {post.data.day}</p>
+            <h3>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            </h3>
+            <p>{post.data.description}</p>
+          </article>
+        ))}
       </section>
     </main>
   </body>
