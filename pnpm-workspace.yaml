@@ -6,3 +6,5 @@ onlyBuiltDependencies:
 
 minimumReleaseAge: 10080
 trustPolicy: no-downgrade
+minimumReleaseAgeExclude:
+  - http-cache-semantics@4.3.0

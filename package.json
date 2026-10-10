@@ -28,11 +28,13 @@
       "esbuild": ">=0.28.1",
       "astro>js-yaml": "4.3.2",
       "@astrojs/internal-helpers>js-yaml": "4.3.2",
-      "sharp@^0.35": "0.35.4",
-      "smol-toml@^1": "1.8.0",
+      "sharp@^0.35": "0.35.5",
+      "smol-toml@^1": "1.9.0",
       "svgo@^4": "4.1.0",
       "devalue@^5": "5.9.4",
-      "undici@^8": "8.10.2"
+      "undici@^8": "8.10.2",
+      "source-map-js@^1": "1.2.2",
+      "http-cache-semantics@^4": "4.3.0"
     }
   }
 }
